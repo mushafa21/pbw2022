@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+
+}
+header{
+    padding: 35px;
+    text-align: center;
+    background-color: blue;
+    border: 2px solid green;
+
+
+}
+
+nav{
+    float: left;
+    text-align: center;
+    width: 20%;
+
+}
+nav ul{
+    list-style-type: none;
+    padding: 8px;
+    margin-top: 0px;
+}
+p {
+    font-family: serif;
+    line-height: 1.75em;
+   }
+i {
+    font-family: sans;
+    color: orange;
+   }
+h2 {
+    font-family: sans;
+    color: #333;
+}
