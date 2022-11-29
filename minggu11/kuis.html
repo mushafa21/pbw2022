@@ -1,0 +1,51 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<title>Kuis HTML</title> 
+</head> 
+<body> 
+    <script> 
+    var mahasiswa = []
+    var jumlah = 0;
+
+    function tambah(){
+        var myForm = document.formMahasiswa;
+        var nama = myForm.tambahNama.value;
+
+        if(nama != ""){
+        mahasiswa.push(nama)
+        myForm.tambahNama.value = "";
+        var inner = "";
+        jumlah++;
+        mahasiswa.forEach((data) => { 
+            inner += "<tr>";
+            inner += "<td>" + data + "</td>";
+            inner += "</tr>";
+        }); 
+        document.getElementById('mhs').innerHTML = inner;
+        document.getElementById('counter').innerHTML = "<p> Jumlah Mahasiswa : " + jumlah + "</p>";
+        }
+
+    }
+
+    </script> 
+
+    <h2>Data Mahasiswa PBW 2022</h2>
+    <form method="POST" action="javasctipt:void(0)" onsubmit="tambah()" name="formMahasiswa">
+        <input type="text" placeholder="Input Nama MHS" id="tambahNama">
+        <input type="submit" value="+">
+    </form>
+    <div id="counter"></div>
+    <table border="1px">
+        <thead>
+            <tr>
+                <td>Daftar Nama</td>
+            </tr>
+            
+        </thead>
+        <tbody id="mhs"></tbody>
+
+    </table>
+
+</body> 
+</html> 
