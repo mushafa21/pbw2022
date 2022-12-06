@@ -8,6 +8,48 @@
     var mahasiswa = []
     var jumlah = 0;
 
+
+    function hapus(position){
+        var yakin = confirm("Apakah anda yakin ingin menghapus mahasiswa " + mahasiswa[position] + "?");
+        if(yakin){
+        mahasiswa.splice(position,1);
+        var inner = "";
+        jumlah--;
+        for(i = 0; i < mahasiswa.length; i ++){
+            inner += "<tr>";
+            inner += "<td>" + mahasiswa[i];
+            inner += ' <button onclick ="hapus(' +i +')"> delete </button>' 
+            inner += ' <button onclick ="update(' +i +')"> update </button>' 
+            inner += "</td></tr>";
+        }   
+
+        document.getElementById('mhs').innerHTML = inner;
+        document.getElementById('counter').innerHTML = "<p> Jumlah Mahasiswa : " + jumlah + "</p>";
+        }
+
+    }
+
+    function update(position){
+        var namaBaru = prompt("Masukan Nama Mahasiswa Baru", mahasiswa[position]);
+        if(namaBaru != null){
+            mahasiswa[position] = namaBaru;
+            var inner = "";
+            for(i = 0; i < mahasiswa.length; i ++){
+            inner += "<tr>";
+            inner += "<td>" + mahasiswa[i];
+            inner += ' <button onclick ="hapus(' +i +')"> delete </button>' 
+            inner += ' <button onclick ="update(' +i +')"> update </button>' 
+            inner += "</td></tr>";
+
+        }
+        document.getElementById('mhs').innerHTML = inner;
+        document.getElementById('counter').innerHTML = "<p> Jumlah Mahasiswa : " + jumlah + "</p>";
+
+        }
+
+    }
+
+    
     function tambah(){
         var myForm = document.formMahasiswa;
         var nama = myForm.tambahNama.value;
@@ -17,11 +59,14 @@
         myForm.tambahNama.value = "";
         var inner = "";
         jumlah++;
-        mahasiswa.forEach((data) => { 
+        for(i = 0; i < mahasiswa.length; i ++){
             inner += "<tr>";
-            inner += "<td>" + data + "</td>";
-            inner += "</tr>";
-        }); 
+            inner += "<td>" + mahasiswa[i];
+            inner += ' <button onclick ="hapus(' +i +')"> delete </button>' 
+            inner += ' <button onclick ="update(' +i +')"> update </button>' 
+            inner += "</td></tr>";
+        }
+
         document.getElementById('mhs').innerHTML = inner;
         document.getElementById('counter').innerHTML = "<p> Jumlah Mahasiswa : " + jumlah + "</p>";
         }
